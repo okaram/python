@@ -1,0 +1,43 @@
+{
+    "sheets": [
+        {
+            "title": "P&P",
+            "queries": [
+                {
+                    "db_driver": "psycopg2",
+                    "db_conn_str": "dbname=curri user=curri",
+                    "title": "People",
+                    "query": "SELECT * FROM Person"
+                },
+                {
+                    "db_driver": "psycopg2",
+                    "db_conn_str": "dbname=curri user=curri",
+                    "title": "Products",
+                    "query": "SELECT * FROM Products"
+                }
+                
+            ]
+            
+        },
+        {
+            "title": "Rev",
+            "queries": [
+                {
+                    "db_driver": "psycopg2",
+                    "db_conn_str": "dbname=curri user=curri",
+                    "title": "People",
+                    "query": "SELECT * FROM Person ORDER BY Id DESC"
+                },
+                {
+                    "db_driver": "psycopg2",
+                    "db_conn_str": "dbname=curri user=curri",
+                    "title": "Products",
+                    "query": "SELECT * FROM Products"
+                }
+                
+            ]
+            
+        }
+        
+    ]
+}

@@ -80,8 +80,7 @@ def query2print(db,query):
     cursor2print(cur)
     
 if __name__ == '__main__':
-#    db = dbapi2.connect (database="curri", user="curri")
-    db = dbapi2.connect ("dbname=curri user=curri")
+    db = dbapi2.connect (database="curri", user="curri")
     wb = Workbook()
     query2xl(db,sys.argv[1],wb)
     sheet=SheetSpec('Products and People',
