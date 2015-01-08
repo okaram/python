@@ -29,12 +29,24 @@ linux_config.disable_ssh_password_authentication=False
 
 os_hd = OSVirtualHardDisk(image_name,media_link)
 
+
+endpoint_config = ConfigurationSet()
+endpoint_config.configuration_set_type = 'NetworkConfiguration'
+
+endpoint1 = ConfigurationSetInputEndpoint(name = 'ssh', protocol = 'tcp', port = '22', local_port = '22', load_balanced_endpoint_set_name = None, enable_direct_server_return = False)
+
+#endpoints must be specified as elements in a list
+
+endpoint_config.input_endpoints.input_endpoints.append(endpoint1)
+
+
 vm1=sms.create_virtual_machine_deployment(service_name=name,
     deployment_name=name,
     deployment_slot='production',
     label=name,
     role_name=name,
     system_config=linux_config,
+    network_config = endpoint_config,
     os_virtual_hard_disk=os_hd,
-    role_size='Basic_A0')    
+    role_size='A0')    
     
