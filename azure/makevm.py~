@@ -48,5 +48,5 @@ vm1=sms.create_virtual_machine_deployment(service_name=name,
     system_config=linux_config,
     network_config = endpoint_config,
     os_virtual_hard_disk=os_hd,
-    role_size='A0')    
+    role_size='Basic_A0')    
     

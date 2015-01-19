@@ -1,22 +1,32 @@
 from azure import *
 from azure.servicemanagement import *
+from sys import argv
 
+if len(argv)==2:
+	name=argv[1]
+else :
+	print("Usage: deletevm vmname [servicename]")
+	exit()
+	
 subscription_id = 'e1b9949f-8fef-4751-8363-7eb960298a63'
 certificate_path = '/home/curri/AzureCert.pem'
 
 sms = ServiceManagementService(subscription_id, certificate_path)
 
-name = 'okaramvm2'
 location = 'West US'
 
 # later find out about affinity_group
-#sms.create_hosted_service(service_name=name,label=name,location=location)
+
+if(sms.check_hosted_service_name_availability(name).result):
+	sms.create_hosted_service(service_name=name,label=name,location=location)
 
 
 # Name of an os image as returned by list_os_images
 
 image_name='b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_10-amd64-server-20141204-en-us-30GB'
-media_link = 'http://portalvhdsw37ybpl14kktk.blob.core.windows.net/vhd-store/'+image_name+'.vhd'
+#media_link = 'http://okhdinisght.blob.core.windows.net/vhd-store/'+image_name+'.vhd'
+
+media_link = 'http://okhdinisght.blob.core.windows.net/vhds/'+name+'.vhd'
 
 # Destination storage account container/blob where the VM disk
 # will be created
